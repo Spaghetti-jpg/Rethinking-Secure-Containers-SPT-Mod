@@ -1,6 +1,16 @@
 # Rethinking-Secure-Containers-SPT-Mod
 It's not supposed to be easy in Tarkov
 
+<p align="center">
+  <img src="https://github.com/Spaghetti-jpg/Rethinking-Secure-Containers-SPT-Mod/blob/main/1.png" alt="alt text">
+</p>
+
+![alt text](https://github.com/Spaghetti-jpg/Rethinking-Secure-Containers-SPT-Mod/blob/main/3.png)
+
+![alt text](https://github.com/Spaghetti-jpg/Rethinking-Secure-Containers-SPT-Mod/blob/main/2.png)
+
+
+
 ## [About](#about)
 
 I decided to rethink safe containers, which is why this mod was created. We're used to relying on a magic container that gives us a chance to get some loot from a raid or save our own, but what if you don't have one, at least at first? 
