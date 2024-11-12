@@ -191,7 +191,7 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
 
         trader.assort.loyal_level_items["Hacker_666aa308e8e00edadd0d15df"] = config.Alpha_Container.LoyaltyLevel;
 
-        this.logMessage("Add: Alpha secure container to trader Peacekeeper");
+        this.logMessage("Add: Added Secure container Alpha to trader Peacekeeper");
     }
 
     private updateBetaContainerBarter(tables: IDatabaseTables): void {
@@ -208,9 +208,9 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
         if (trader.assort.barter_scheme[betaContainerId]) {
             trader.assort.barter_scheme[betaContainerId] = config.Beta_Container.Barter;
 
-            this.logMessage("Beta container barter scheme updated successfully.");
+            this.logMessage("Secure container Beta barter scheme updated successfully.");
         } else {
-            this.logMessage("Beta container not found in Peacekeeper's assortment.", LogTextColor.RED);
+            this.logMessage("Secure container Beta not found in Peacekeeper's assortment.", LogTextColor.RED);
         }
     }
 
@@ -245,7 +245,7 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
 
         trader.assort.loyal_level_items["Hacker_5857a8bc2459772bad15db29"] = config.Gamma_Container.LoyaltyLevel;
 
-        this.logMessage("Add: Added Gamma secure container to trader Peacekeeper");
+        this.logMessage("Add: Added Secure container Gamma to trader Peacekeeper");
     }
 
 }
