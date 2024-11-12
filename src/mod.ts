@@ -9,7 +9,7 @@ import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
 import * as config from "../config/config.json";
 
-class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
+class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
     private logger: ILogger;
     private waistPouchId = "5732ee6a24597719ae0c0281";
     private alphaContainerId = "544a11ac4bdc2d470e8b456a";
@@ -21,7 +21,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
         this.logger = container.resolve<ILogger>("WinstonLogger");
 
         staticRMS.registerStaticRouter(
-            "ReplaceContainerMod_ProfileCreate",
+            "RethinkingSecureContainersMod_ProfileCreate",
             [
                 {
                     url: "/client/game/profile/create",
@@ -32,7 +32,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
         );
 
         staticRMS.registerStaticRouter(
-            "ReplaceContainerMod_GameStart",
+            "RethinkingSecureContainersMod_GameStart",
             [
                 {
                     url: "/client/game/start",
@@ -57,7 +57,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
     }
 
     private logMessage(message: string, color: LogTextColor = LogTextColor.GREEN) {
-        this.logger.logWithColor(`[Replace Container Mod] ${message}`, color);
+        this.logger.logWithColor(`[Rethinking Secure Containers Mod] ${message}`, color);
     }
 
     private async profileAction(profileHelper: ProfileHelper, sessionID: any, output: any, actionName: string): Promise<any> {
@@ -120,7 +120,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
         waistPouch._props.Grids[0]._props.cellsV = config.Waist_Pouch.WaistPouch_cellsV;
 
         this.logMessage(
-            `Waist pouch size updated: Height set to ${waistPouch._props.sizeHeight}, Width set to ${waistPouch._props.sizeWidth}, cellsH set to ${config.Waist_Pouch.WaistPouch_cellsH}, cellsV set to ${config.Waist_Pouch.WaistPouch_cellsV}.`,
+            "Waist pouch size updated",
             LogTextColor.GREEN
         );
     }
@@ -157,7 +157,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
         ]];
         trader.assort.loyal_level_items["Hacker_waistPouchAssort"] = config.Waist_Pouch.LoyaltyLevel;
 
-        this.logMessage("Add: Waist Pouch has been added to the Ragman range at loyalty level " + config.Waist_Pouch.LoyaltyLevel + ".");
+        this.logMessage("Add: Waist Pouch added by trader Ragman");
     }
 
     private addAlphaContainerToTrader(tables: IDatabaseTables): void {
@@ -191,7 +191,7 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
 
         trader.assort.loyal_level_items["Hacker_666aa308e8e00edadd0d15df"] = config.Alpha_Container.LoyaltyLevel;
 
-        this.logMessage("Add: Secure container Alpha has been added to the Peacekeeper range at loyalty level " + config.Alpha_Container.LoyaltyLevel + ".");
+        this.logMessage("Add: Alpha secure container to trader Peacekeeper");
     }
 
     private updateBetaContainerBarter(tables: IDatabaseTables): void {
@@ -245,9 +245,9 @@ class ReplaceContainerMod implements IPreSptLoadMod, IPostDBLoadMod {
 
         trader.assort.loyal_level_items["Hacker_5857a8bc2459772bad15db29"] = config.Gamma_Container.LoyaltyLevel;
 
-        this.logMessage("Add: Secure container Gamma has been added to the Peacekeeper range at loyalty level " + config.Gamma_Container.LoyaltyLevel + ".");
+        this.logMessage("Add: Added Gamma secure container to trader Peacekeeper");
     }
 
 }
 
-module.exports = { mod: new ReplaceContainerMod() };
+module.exports = { mod: new RethinkingSecureContainersMod() };
