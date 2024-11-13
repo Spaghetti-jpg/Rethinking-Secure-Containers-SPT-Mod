@@ -51,7 +51,7 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
 
         this.updateWaistPouchSize(tables); 
         this.addWaistPouchToTrader(tables);
-        this.addAlphaContainerToTrader(tables);
+        this.updateAlphaContainerBarter(tables);
         this.updateBetaContainerBarter(tables);
         this.addGammaContainerToTrader(tables);
     }
@@ -160,12 +160,7 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
         this.logMessage("Add: Waist Pouch added by trader Ragman");
     }
 
-    private addAlphaContainerToTrader(tables: IDatabaseTables): void {
-        if (!config.Alpha_Container.AvailableToTrader) {
-            this.logMessage("Alpha Container is not set to be available to trader.", LogTextColor.YELLOW);
-            return;
-        }
-
+    private updateAlphaContainerBarter(tables: IDatabaseTables): void {
         const traderId = "5935c25fb3acc3127c3d8cd9"; // ID Peacekeeper
         const trader = tables.traders[traderId];
 
@@ -174,24 +169,15 @@ class RethinkingSecureContainersMod implements IPreSptLoadMod, IPostDBLoadMod {
             return;
         }
 
-        trader.assort.items.push({
-            "_id": "Hacker_666aa308e8e00edadd0d15df",
-            "_tpl": this.alphaContainerId,
-            "parentId": "hideout",
-            "slotId": "hideout",
-            "upd": {
-                "UnlimitedCount": true,
-                "StackObjectsCount": 9999999,
-                "BuyRestrictionMax": 1,
-                "BuyRestrictionCurrent": 0
-            }
-        });
+        const alphaContainerId = "666aa308e8e00edadd0d15df"; // ID Alpha barter
 
-        trader.assort.barter_scheme["Hacker_666aa308e8e00edadd0d15df"] = config.Alpha_Container.Barter;
+        if (trader.assort.barter_scheme[alphaContainerId]) {
+            trader.assort.barter_scheme[alphaContainerId] = config.Alpha_Container.Barter;
 
-        trader.assort.loyal_level_items["Hacker_666aa308e8e00edadd0d15df"] = config.Alpha_Container.LoyaltyLevel;
-
-        this.logMessage("Add: Added Secure container Alpha to trader Peacekeeper");
+            this.logMessage("Secure container Alpha barter scheme updated successfully.");
+        } else {
+            this.logMessage("Secure container Alpha not found in Peacekeeper's assortment.", LogTextColor.RED);
+        }
     }
 
     private updateBetaContainerBarter(tables: IDatabaseTables): void {
